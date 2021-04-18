@@ -41,6 +41,7 @@ public class CoronaVirusDataService {
 
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
         for (CSVRecord record : records) {
+            int[] seven_days_cases = new int[7];
             LocationStats locationStat = new LocationStats();
             locationStat.setState(record.get("Province_State"));
             locationStat.setCountry(record.get("Admin2"));
@@ -49,7 +50,10 @@ public class CoronaVirusDataService {
             locationStat.setLatestTotalCases(latestCases);
             locationStat.setDailyChange(latestCases - prevDayCases);
             newStats.add(locationStat);
-
+            for(int i=0; i<7; i++){
+                seven_days_cases[i]=Integer.parseInt(record.get(record.size() - i-1));
+            }
+            locationStat.setSeverDayCases(seven_days_cases);
         }
          this.allStats= newStats;
     }

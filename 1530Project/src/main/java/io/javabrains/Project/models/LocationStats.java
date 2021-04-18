@@ -6,6 +6,7 @@ public class LocationStats {
     private String country;
     private int latestTotalCases;
     private int dailyChange;
+    private int[] seven_day_cases;
 
     public int getDailyChange() {
         return dailyChange;
@@ -46,5 +47,12 @@ public class LocationStats {
                 ", country='" + country + '\'' +
                 ", latestTotalCases=" + latestTotalCases +
                 '}';
+    }
+    public void setSeverDayCases(int[] seven_days_cases) {
+        this.seven_day_cases=seven_days_cases;
+    }
+
+    public int[] getSeverDayCases() {
+        return seven_day_cases;
     }
 }
