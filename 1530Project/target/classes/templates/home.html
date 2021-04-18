@@ -15,7 +15,7 @@
 
 <body style="background-color:grey;">
 
-    <p style="text-align:center;"><img src="covidlogo.png" height="225"></p>
+    <p style="text-align:center;"><img src="https://drive.google.com/uc?export=view&id=1YlzFuYwrxroJL0sTOQO1yjjbWXiqSFC3" height="225"></p>
 
     <div class="container">
         <h1 style="color:rgb(154,53,53)">Coronavirus Tracker</h1>
@@ -41,7 +41,7 @@
 
         </div>
 
-        <div style="height:500px;overflow-y:scroll;;">
+        <div>
             <label class="w3-text-blue"><b>Search</b></label>
 
             <input class="w3-input w3-border" type="text" id="myInput" onkeyup="myFunction()"
@@ -72,6 +72,28 @@
         </div>
         <script>
             function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+
+            function buttonFunction() {
                 // Declare variables
                 var input, filter, table, tr, td, i, txtValue;
                 input = document.getElementById("myInput");
