@@ -46,13 +46,15 @@
 
 <body>
 
-<<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<p style="text-align:center;"><img src="covidlogo.png" height="225"></p>
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
 <div class="container">
-    <h1>Coronavirus Tracker</h1>
-    <p>This application lists the current number of cases reported across the globe</p>
+    <h1 style="color:rgb(154,53,53)">Coronavirus Tracker</h1>
+    <p style="color:rgb(141,210,207)">This application lists the current number of cases reported across the globe.</p>
 
     <div class="jumbotron">
         <h1 class="display-4" th:text="${totalReportedCases}"></h1>
