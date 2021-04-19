@@ -51,6 +51,7 @@ public class CoronaVirusDataService {
             int fourDayCases = Integer.parseInt(record.get(record.size() - 5));
             int fiveDayCases = Integer.parseInt(record.get(record.size() - 6));
             int sixDayCases = Integer.parseInt(record.get(record.size() - 7));
+            int sevenDayCases = Integer.parseInt(record.get(record.size() - 8));
             locationStat.setLatestTotalCases(latestCases);
             locationStat.setDailyChange(latestCases - prevDayCases);
             locationStat.setPrevDayCases(prevDayCases);
@@ -59,6 +60,7 @@ public class CoronaVirusDataService {
             locationStat.setFourDaycases(fourDayCases);
             locationStat.setFiveDaycases(fiveDayCases);
             locationStat.setSixDaycases(sixDayCases);
+            locationStat.setSevenDaycases(sevenDayCases);
             newStats.add(locationStat);
         }
          this.allStats= newStats;

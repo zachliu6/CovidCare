@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <script>
         window.onload = function () {
             var today = [[${totalReportedCases}]];
@@ -32,6 +33,7 @@
                 theme: "dark2",
                 title:{
                     text: "Total Cases in Past 7 days"
+                     
                 },
                 data: [{
                     type: "line",
@@ -53,7 +55,7 @@
     </script>
 </head>
 
-<body style="background-color:rgb(165, 155, 160);">
+<body style="background-color:rgb(163, 162, 162);">
 
     <p style="text-align:center;"><img src="https://drive.google.com/uc?export=view&id=1YlzFuYwrxroJL0sTOQO1yjjbWXiqSFC3" height="225"></p>
 
@@ -73,7 +75,7 @@
                     </td>
         </table>
 
-        <div class="jumbotron" style="background-color:rgb(154,53,53);">
+        <div class="jumbotron" style="background-color:rgb(44, 48, 51);">
             <h1 class="display-4" th:text="${totalReportedCases}" style="color:rgb(141,210,207)"></h1>
             <p style="color:rgb(141,210,207)" class="lead">Total cases reported as of today</p>
             <hr class="my-4">
@@ -116,6 +118,8 @@
             </table>
             <div> </div>
             <span> </span>
+            <h1 style="color:rgb(154,53,53) ">Data Visuals</h1>
+
             <div id="chartContainer" align="center" style="height: 300px; width: 100%; margin-top: 20px"></div>
         </div>
         <script>
