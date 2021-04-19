@@ -3,7 +3,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
 <script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
-
+<script src="https://unpkg.com/tlx/browser/tlx.js"></script>
+<script src="https://unpkg.com/tlx-chart/browser/tlx-chart.js"></script>
 </html>
 
 <head>
@@ -11,11 +12,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        window.onload = function () {
+            var today = [[${totalReportedCases}]];
+            var yest = [[${previousDay}]];
+            var two = [[${twoDay}]];
+            var three = [[${threeDay}]];
+            var four = [[${fourDay}]];
+            var five = [[${fiveDay}]];
+            var six = [[${sixDay}]];
+            console.log(today);
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                    text: "Total Cases in Past 7 days"
+                },
+                data: [{
+                    type: "line",
+                    indexLabelFontSize: 16,
+                    dataPoints: [
+                        { y: six , x:1},
+                        { y: five, x:2},
+                        { y: four, x:3},
+                        { y: three, x:4},
+                        { y: two, x:5 },
+                        { y: yest, x:6 },
+                        { y: today, x:7 }
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
 </head>
 
 <body style="background-color:grey;">
 
     <p style="text-align:center;"><img src="https://drive.google.com/uc?export=view&id=1YlzFuYwrxroJL0sTOQO1yjjbWXiqSFC3" height="225"></p>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 
     <div class="container">
         <h1 style="color:rgb(154,53,53)">Coronavirus Tracker</h1>
@@ -48,7 +87,7 @@
                 placeholder="by county...">
             <div style="height:500px;overflow-y:scroll;;" id="myTable">
 
-                <table class="table table-dark">
+                <table class="table table-dark" >
                     <thead class="thead-light">
                         <tr>
                             <th>State</th>
@@ -64,36 +103,17 @@
                         <td th:text="${locationStat.country}"></td>
                         <td th:text="${locationStat.latestTotalCases}">0</td>
                         <td th:text="${locationStat.dailyChange}">0</td>
-                        <td><button class="editbtn">Open</button></td>
+                        //<td><button onclick="buttonFunction()">Open</button></td>
                     </tr>
                 </table>
             </div>
             </table>
+            <div> </div>
+            <span> </span>
+            <div id="chartContainer" align="center" style="height: 300px; width: 100%; margin-top: 20px"></div>
         </div>
         <script>
             function myFunction() {
-                // Declare variables
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("myInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("myTable");
-                tr = table.getElementsByTagName("tr");
-
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-
-            function buttonFunction() {
                 // Declare variables
                 var input, filter, table, tr, td, i, txtValue;
                 input = document.getElementById("myInput");
